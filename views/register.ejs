@@ -1,0 +1,41 @@
+<%- include('template/header') %>
+
+<div class="container d-block">
+    <div class="imagen">
+         <img src="image/logo.jpg" alt="Logo Bluezone">
+</div>
+<div class="container center d-block">
+    <h3 class="text-center">Vamos a conocernos</h3>
+        <form action="/register" class="login" method="POST">
+            <label class="top"  for="">Nombre</label>
+            <input  type="text" name="name">
+            <label class="top" for="">Email</label>
+            <input type="email" name="email">
+            <label class="top" for="">Contraseña</label>
+            <input type="password" name="pass">
+            <label class="top" for="">Confirmar Contraseña</label>
+            <input type="password" name="passconfirm">    
+            
+        <div class="boton">
+            <input type="submit" class="btn btn-blanco mt-4" value="Registrarse">
+        </div>
+        <div class="boton">
+            <a href="/login" class="btn btn-blanco mt-4">Cancelar</a>
+        </div> 
+    </form>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<% if(typeof alert != "undefined") { %>
+    <script>
+        swal.fire({
+            title: '<%= alertTitle %>',
+            text: '<%= alertMessage %>',
+            icon: '<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %> ,
+            timer: <%= timer %>
+        }).then(()=>{
+            window.location='<%= ruta %>'
+        })
+    </script>
+    <% } %>
+<%- include('template/footer')%>

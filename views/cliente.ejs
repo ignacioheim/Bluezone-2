@@ -1,0 +1,276 @@
+<%- include('template/header') %>
+
+<header class="d-flex">
+
+    <% if (login) { %>
+    <div class="d-flex w-100 justify-content-between align-items-center m-auto  p-3">
+        <span class="letra-header-1"> Bluezone</span>
+        <di>
+            <span class="letra-header-1">Hola<strong >, <%= name %></strong></span>
+            <% } %>
+        </di>
+  
+        <a class="letra-header-1" style="font-size: 20px" href="logout">Cerrar sesión</a>
+    </div>
+  
+  </header>
+
+
+<div class="row">
+    <div class="container-top azul">
+        <div class="text-start m-1">
+            <a href="javascript:window.history.back();" class="link-blanco"><span class="material-icons text-decoration-none">arrow_back</span></a>
+        </div>
+        <div class="text-end">
+            <span><%= razon %></span>
+        </div>
+        <h5 class="main-title"><%= razon %></h5>
+        <p>Fecha de inicio - <%= fecha %></p>
+        <div class="buttons-links">
+            <div class="d-flex flex-column align-items-center">
+                <span class="material-icons azul icono-redondo p-1">rss_feed</span>
+                <span class="azul sub-menu"> RRSS</span>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <span class="material-icons azul icono-redondo p-1">call</span>
+                <span class="azul sub-menu">Contacto</span>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <span class="material-icons azul icono-redondo p-1">build</span>
+                <span class="azul sub-menu">Materiales</span>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <span class="material-icons azul icono-redondo p-1">language</span>
+                <span class="azul sub-menu"> Web </span>
+            </div>
+        </div>
+        <!-- Cards cliente -->
+        <div class="container">
+            <div class="row">
+                <div class="card m-4 shadow">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-title">Transacciones recientes</h5>
+                            <button onclick="mostrarNuevaTransaccion()">+</button>
+                        </div>
+                        <div class="transaction">
+                            <div class="row">
+                                <div class="col-sm-2 green">
+                                    <p class="card-text"><i class="bi bi-arrow-down-up"></i></p>
+                                </div>
+                            <table>
+                                    <th>
+                                        <td class="card-text" style="color: blue;">Concepto</td>
+                                      </th>
+                                    
+                                    <% concepto.forEach(function(value) {%>
+                                        <tr>
+                                        <td>
+                                    <div class="col-sm-5">
+                                        <span class="card-text" style="color: blue;"><%= value %></span>
+                                    </div>
+                                        </td>
+                                        </tr>
+                                        <% }) %> 
+                            </table>
+                            <table>
+                                <th>
+                                    <td class="card-text" style="color: blue;">Monto</td>
+                                </th>
+                                <% movimientos.forEach(function(value) {%>
+                                <tr>
+                                    <td>
+                                <div class="col-sm-5">
+                                    <span class="card-text" style="color: blue;"><%= value %></span>
+                                </div>
+                                    </td>
+                                </tr>
+                                <% }) %>                                                                      
+                        </table>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="card my-4 shadow">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-title">Etapa del proyecto</h5>
+                            <button onclick="mostrarNuevaEtapa()">+</button>
+                        </div>
+                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <div class="container">
+                            <div class="timeline">
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-4 shadow">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-title">TFA</h5>
+                            <button onclick="mostrarNuevaTFA()">+</button>
+                        </div>
+                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <div class="container">
+                            <div class="timeline">
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Recordatorio</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Hosting</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card m-4 shadow card-saldo">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-title">Saldo</h5>
+                        </div>
+                        <h5 class="card-subtitle mb-2 green"><%= saldo %></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="nuevaTransaccion" class="card m-4 shadow card-input noMostrar">
+                    <div class="card-body">
+                        <button onclick="ocultarNuevaTransaccion()"><i class="bi bi-arrow-left-short"></i></button>
+                        <div class="card-header">
+                            <h5 class="card-title">Añadir transacción</h5>
+                        </div>
+                        <form action="/transaccion/<%= id %>" method="POST">
+                            <select name="transaccion" id="">
+                                <option value="ingreso">Ingreso</option>
+                                <option value="egreso">Egreso</option>
+                            </select></br>
+                            <input type="text" placeholder="Destinatario" name="destinatario">
+                            <input type="date" placeholder="Fecha (D/M/A)" name="fecha">
+                            <input type="number" placeholder="Monto" name="monto">
+                            <input class="añadir" type="submit" value="Añadir">
+                        </form>
+                    </div>
+                </div>
+                <div id="nuevaEtapa" class="card my-4 shadow card-input noMostrar">
+                    <div class="card-body">
+                        <button onclick="ocultarNuevaEtapa()"><i class="bi bi-arrow-left-short"></i></button>
+                        <div class="card-header">
+                            <h5 class="card-title">Añadir Etapa del proyecto</h5>
+                        </div>
+                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <div class="container">
+                            <div class="timeline">
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="nuevaTFA" class="card m-4 shadow card-input noMostrar">
+                    <div class="card-body">
+                        <button onclick="ocultarNuevaTFA()"><i class="bi bi-arrow-left-short"></i></button>
+                        <div class="card-header">
+                            <h5 class="card-title">Añadir TFA</h5>
+                        </div>
+                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <div class="container">
+                            <div class="timeline">
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Recordatorio</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Hosting</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-row">
+                                    <div class="timeline-content">
+                                        <h4>Reunión</h4>
+                                        <p>0/0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Cards Cliente -->
+
+<%- include('template/footer') %>

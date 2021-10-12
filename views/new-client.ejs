@@ -1,0 +1,107 @@
+<%- include('template/header')%>
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/home">Bluezone</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <% if (login) { %>                
+      <div class="navbar-nav">
+         <a id="user">Hola, <strong><%= name %></strong></a>
+     </div>
+    <% } %>
+    
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="logout">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="home">
+                <span data-feather="home"></span>
+                Tablero
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nuevo-cliente">
+                <span data-feather="user"></span>
+                Nuevo cliente
+              </a>
+          </ul>
+        </div>
+      </nav>
+  
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Crear Proyecto</h1>
+          </div>
+      
+      </main>
+    </div>
+  </div>
+
+  <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <form action="/create" method="POST">
+        <div class="form-group">
+          <label>Nombre de la empresa</label>
+          <input type="text" class="form-control" placeholder="Ingresar nombre" name="companyName" required>
+        </br>
+        <div class="form-group">
+          <label>Responsable empresa</label>
+          <input type="text" class="form-control" placeholder="Ingresar nombre" name="responsableName" required>
+        </br>
+        </div>
+        <div class="form-group">
+          <label>Fecha de inicio del proyecto</label>
+          <input type="date" class="form-control" placeholder="Ingresar fecha" name="date" required>
+        </div>
+        </br>
+        <div class="form-group">
+            <label>Facebook</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="facebook">
+          </br>
+          <div class="form-group">
+            <label>Instagram</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="instagram">
+          </br>
+          <div class="form-group">
+            <label>Twitter</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="twitter">
+          </br>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Ingresar email" name="email" required>
+          </br>
+          <div class="form-group">
+            <label>Número de teléfono</label>
+            <input type="number" class="form-control" placeholder="Ingresar número" name="phoneNumber" required>
+          </br>
+          <div class="form-group">
+            <label>Google Drive</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="googleDrive">
+          </br>
+          <div class="form-group">
+            <label>Otros enlaces</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="otherLinks">
+          </br>
+          <div class="form-group">
+            <label>Sitio web</label>
+            <input type="text" class="form-control" placeholder="Ingresar url" name="web">
+          </br>
+        <button type="submit" class="btn btn-primary">Crear</button>
+        <a href="home" class="btn btn-secondary">Cancelar</a>
+      </form>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/5.1/examples/dashboard/dashboard.js"></script>
+
+<%- include('template/footer')%>

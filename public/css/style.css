@@ -1,0 +1,130 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+
+}
+
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.imagen img {
+    border-radius: 100%;
+    box-shadow: 0px 41px 34px -44px rgba(0, 0, 0, 0.95);
+    -webkit-box-shadow: 0px 41px 34px -44px rgba(0, 0, 0, 0.95);
+    -moz-box-shadow: 0px 41px 34px -44px rgba(0, 0, 0, 0.95);
+    width: 130px;
+}
+
+.login {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.btn-blanco {
+    border: 1px #546bff solid;
+    background-color: #fff;
+    color: #2340ff;
+    font-weight: bolder;
+    border-radius: 20px;
+    padding: 4px 25px;
+}
+
+.btn-blanco:hover {
+    background-color: #546bff;
+    color: #fff;
+}
+
+input {
+    border: 1px #546bff solid;
+    border-radius: 10px;
+    padding: 2px 45px;
+}
+
+label {
+    color: #000;
+    font-weight: bolder;
+}
+
+span a {
+    text-decoration: none;
+    color: #c9c9c9;
+    font-weight: normal;
+    font-size: 9px;
+}
+
+span a:hover {
+    color: #546bff;
+}
+
+.check {
+    margin-top: 10px;
+}
+
+.recordarme label {
+    color: #c9c9c9;
+    font-weight: normal;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+}
+
+
+.registrarse {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.top {
+    padding-top: 15px;
+}
+
+.white {
+    background-color: #fff;
+}
+
+.x {
+    display: flex;
+    justify-content: end;
+}
+
+.border {
+    border-radius: 20px;
+    border: 2px #2340ff solid !important;
+    margin: auto 100px !important;
+}
+
+h4 {
+    color: #2340ff;
+    padding-left: 25px;
+}
+
+#user {
+     color: white;
+     margin-left: 1000px;
+    }
+.main-title{
+    font-size: 80px;
+}

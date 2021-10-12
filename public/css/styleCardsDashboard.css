@@ -1,0 +1,68 @@
+.openSans {
+    font-family: openSans;
+}
+
+.clienteTitle {
+    font-size: 15px;
+}
+
+.bc546bff {
+    background-color: #546bff;
+}
+
+.fecha {
+    font-size: 11px;
+}
+
+.saldo {
+    margin-bottom: 1rem;
+}
+
+.cardSemaforo {
+    flex-direction: row;
+    width: 80%;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.marginSemaforo {
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.dashboardCard {
+    margin-right: 0%;
+    margin-bottom: 1%;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.dotWIP {
+    background-color: #4BFF00 !important;
+}
+
+.dotWIF {
+    background-color: #546bff !important;
+}
+
+.dotCM {
+    background-color: #6E00FF !important;
+}
+
+.dotDMT {
+    background-color: #FFC400 !important;
+}
+
+.dotAP {
+    background-color: #00E8D0 !important;
+}
+
+.dotOthers {
+    background-color: #E80000 !important;
+}

@@ -1,0 +1,16 @@
+<%- include('template/header') %>
+
+    <h1>Añadir transacción</h1>
+
+    <form method="POST" action="/ejemplo"> 
+        <select name="transaccion">
+            <option id="ingreso">Ingreso</option>
+            <option id="gasto">Gasto</option>
+        </select>
+        <input type="text" name="destinatario" placeholder="Destinatario">
+        <input type="date" name="fecha" placeholder="Fecha">
+        <input type="numbre" name="monto" placeholder="Monto">
+        <input type="submit" class="btn btn-blanco mt-4" value="Añadir" id="boton">
+    </form>
+    
+<%- include('template/footer')%>
