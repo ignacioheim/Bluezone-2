@@ -19,8 +19,9 @@
 }
 
 .cardSemaforo {
+    margin-right: 5%;
     flex-direction: row;
-    width: 80%;
+    width: 70%;
     border-radius: 15px 15px 15px 15px;
 }
 
@@ -29,8 +30,12 @@
     margin-left: 3%;
 }
 
+.cardsContainer {
+    display: flex;
+}
+
 .dashboardCard {
-    margin-right: 0%;
+    margin-right: 5%;
     margin-bottom: 1%;
 }
 
