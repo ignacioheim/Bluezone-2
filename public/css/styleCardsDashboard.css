@@ -29,8 +29,12 @@
     margin-left: 3%;
 }
 
+.cardsContainer {
+    display: flex;
+}
+
 .dashboardCard {
-    margin-right: 0%;
+    margin-right: 5%;
     margin-bottom: 1%;
 }
 
