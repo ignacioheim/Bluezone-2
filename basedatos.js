@@ -34,14 +34,14 @@ connection.connect(function(error){
 //     }
 // })
 
-connection.query('SELECT * FROM party_id', function(error, rows){
-    if(error) {
-        throw error
-    } else {
-        //let client = rows.forEach(row=>{
-          //  console.log(row)
-          let cliente = rows.filter(function(p){return p.id == 30});
-          console.log(cliente.id)
+// connection.query('SELECT * FROM party_id', function(error, rows){
+//     if(error) {
+//         throw error
+//     } else {
+//         //let client = rows.forEach(row=>{
+//           //  console.log(row)
+//           let cliente = rows.filter(function(p){return p.id == 30});
+//           console.log(cliente.id)
             //   return n.id==8;
            //});
         
@@ -50,8 +50,8 @@ connection.query('SELECT * FROM party_id', function(error, rows){
         //});
         //let cliente = rows.filter(function(p){return p.id == 8}); 
         //console.log(client)
-    }
-})
+//     }
+// })
 
 
 // connection.query('SELECT * from party_id', (error, resultado)=>{
@@ -62,3 +62,16 @@ connection.query('SELECT * FROM party_id', function(error, rows){
 //         res.redirect('cliente/razon-social/:id');
 //     }                    
 // })
+
+connection.query('SELECT par.id_cliente, par.razon_social, par.responsable_empresa, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente group by 1,2,3', function(error, rows){   
+    if (error) {
+        throw error
+    } else {
+        let proyectos = rows.map(function(e) {
+            return e
+        })
+        proyectos.forEach(element => {
+            console.log(element.razon_social);
+        });
+    }
+}); 

@@ -136,9 +136,18 @@ app.post('/auth', async (req,res)=>{
 // 11 - Auth páginas
 app.get('/home', function(req,res) {
     if(req.session.loggedin){
-        res.render('dashboard',{
-            login:true,
-            name:req.session.name
+        connection.query('SELECT par.id_cliente, par.razon_social, par.responsable_empresa, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente group by 1,2,3', function(error, rows){   
+            if (error) {
+                throw error
+            } else {
+                let proyectos = rows.map(function(e) {return e});        
+                console.log(proyectos.length)
+                res.render('dashboard',{
+                login:true,
+                name:req.session.name,
+                proyectos: proyectos
+               })
+            }
         });
     } else {
         res.send('login',{
