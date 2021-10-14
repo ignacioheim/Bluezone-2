@@ -38,6 +38,10 @@
     padding-right: 9px;
 }
 
+.flecha-left {
+    margin-right: 95%;
+}
+
 .transaction {
     display: flex;
     font-weight: bolder;
@@ -58,6 +62,31 @@
 
 .red {
     color: red;
+}
+
+/* Evento */
+
+.evento {
+    color: #546cff;
+    text-align: left;
+}
+
+.evento h5 {
+    font-size: 18px;
+    margin-top: 10%;
+    margin-bottom: 0%;
+}
+
+.infoExtra {
+    position: absolute;
+    display: none;
+    background-color: #5c659c;
+    border-radius: 10px 10px 10px 10px;
+    transform: translateY(-75px);
+}
+
+.evento:hover + .infoExtra {
+    display: block;
 }
 
 /* Timeline */

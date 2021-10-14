@@ -63,64 +63,66 @@
 <nav class="navbar navbar-light">
   <div class="container-fluid">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
 <!--                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>-->
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                      aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                  <li class="nav-item">
-                      <a class="nav-link active menu-canva" aria-current="page" href="home">
-                          <span data-feather="home"></span>
-                          Tablero
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link menu-canva" href="nuevo-cliente">
-                          <span data-feather="user" ></span>
-                          Nuevo cliente
-                      </a>
-                  </li>
-              </ul>
-          </div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active menu-canva" aria-current="page" href="home">
+              <span data-feather="home"></span>
+              Tablero
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-canva" href="nuevo-cliente">
+              <span data-feather="user" ></span>
+              Nuevo cliente
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
-</header>
 
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Proyectos</h1>
-        <div class="card cardSemaforo shadow">
-          <span class="dot dotWIP marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>WIP</strong></p>
-          <span class="dot dotWIF marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>WIF</strong></p>
-          <span class="dot dotCM marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>CM</strong></p>
-          <span class="dot dotDMT marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>DMT</strong></p>
-          <span class="dot dotAP marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>AP</strong></p>
-          <span class="dot dotOthers marginSemaforo"></span>
-          <p class="d-inline marginSemaforo"><strong>Others</strong></p>
-        </div>
-      </div>
-    </main>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Proyectos</h1>
+    <div class="card cardSemaforo shadow">
+      <span class="dot dotWIP marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>WIP</strong></p>
+      <span class="dot dotWIF marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>WIF</strong></p>
+      <span class="dot dotCM marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>CM</strong></p>
+      <span class="dot dotDMT marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>DMT</strong></p>
+      <span class="dot dotAP marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>AP</strong></p>
+      <span class="dot dotFinalizado marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>Finalizado</strong></p>
+      <span class="dot dotOthers marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>Others</strong></p>
+    </div>
   </div>
-</div>
+</main>
 
+<<<<<<< HEAD
 
 <% if (proyectos.length > 0) { %>
 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <% proyectos.forEach(function(value) { %> 
+=======
+<div class="cardsContainer col-md-9 ms-sm-auto col-lg-10 px-md-4"> <!--  -->
+>>>>>>> joaco
   <div class="card openSans shadow dashboardCard">
     <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
     <div class="card-body">
