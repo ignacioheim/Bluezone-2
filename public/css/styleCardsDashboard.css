@@ -68,6 +68,10 @@
     background-color: #00E8D0 !important;
 }
 
-.dotOthers {
+.dotFinalizado {
     background-color: #E80000 !important;
+}
+
+.dotOthers {
+    background-color: #747474 !important;
 }
