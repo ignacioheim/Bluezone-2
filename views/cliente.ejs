@@ -4,13 +4,13 @@
 
     <% if (login) { %>
     <div class="d-flex w-100 justify-content-between align-items-center m-auto  p-3">
-        <span class="letra-header-1"> Bluezone</span>
+        <a class="letra-header-1" href="/home"> Bluezone</a>
         <di>
             <span class="letra-header-1">Hola<strong >, <%= name %></strong></span>
             <% } %>
         </di>
   
-        <a class="letra-header-1" style="font-size: 20px" href="logout">Cerrar sesión</a>
+        <a class="letra-header-1" style="font-size: 20px" href="/logout">Cerrar sesión</a>
     </div>
   
   </header>
@@ -61,7 +61,7 @@
                             <table>
                                     <th>
                                         <td class="card-text" style="color: blue;">Concepto</td>
-                                      </th>
+                                    </th>
                                     
                                     <% concepto.forEach(function(value) {%>
                                         <tr>
@@ -99,31 +99,33 @@
                         </div>
                         <h6 class="card-subtitle mb-2">Contrato vigente</h6>
                         <div class="container">
-                            <div class="timeline">
-                                <div class="timeline-row">
-                                    <div class="timeline-content">
-                                        <h4>Reunión</h4>
-                                        <p>0/0</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-row">
-                                    <div class="timeline-content">
-                                        <h4>Reunión</h4>
-                                        <p>0/0</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-row">
-                                    <div class="timeline-content">
-                                        <h4>Reunión</h4>
-                                        <p>0/0</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-row">
-                                    <div class="timeline-content">
-                                        <h4>Reunión</h4>
-                                        <p>0/0</p>
-                                    </div>
-                                </div>
+                            <div class="evento">
+                                <h5>Reunión</h5>
+                                <p>0/0</p>
+                            </div>
+                            <div class="infoExtra">
+                                <p>Información extra sobre el evento</p>
+                            </div>
+                            <div class="evento">
+                                <h5>Reunión</h5>
+                                <p>0/0</p>
+                            </div>
+                            <div class="infoExtra">
+                                <p>Información extra sobre el evento</p>
+                            </div>
+                            <div class="evento">
+                                <h5>Reunión</h5>
+                                <p>0/0</p>
+                            </div>
+                            <div class="infoExtra">
+                                <p>Información extra sobre el evento</p>
+                            </div>
+                            <div class="evento">
+                                <h5>Reunión</h5>
+                                <p>0/0</p>
+                            </div>
+                            <div class="infoExtra">
+                                <p>Información extra sobre el evento</p>
                             </div>
                         </div>
                     </div>
@@ -179,7 +181,7 @@
             <div class="row">
                 <div id="nuevaTransaccion" class="card m-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button onclick="ocultarNuevaTransaccion()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaTransaccion()"><i class="bi bi-arrow-left-short"></i></button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir transacción</h5>
                         </div>

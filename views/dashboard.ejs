@@ -49,7 +49,7 @@
 
   <% if (login) { %>
   <div class="d-flex w-100 justify-content-between align-items-center m-auto  p-3">
-      <span class="letra-header-1"> Bluezone</span>
+      <a class="letra-header-1" href="home"> Bluezone</a>
       <di>
           <span class="letra-header-1">Hola<strong >, <%= name %></strong></span>
           <% } %>
@@ -107,56 +107,36 @@
       <p class="d-inline marginSemaforo"><strong>DMT</strong></p>
       <span class="dot dotAP marginSemaforo"></span>
       <p class="d-inline marginSemaforo"><strong>AP</strong></p>
+      <span class="dot dotFinalizado marginSemaforo"></span>
+      <p class="d-inline marginSemaforo"><strong>Finalizado</strong></p>
       <span class="dot dotOthers marginSemaforo"></span>
       <p class="d-inline marginSemaforo"><strong>Others</strong></p>
     </div>
   </div>
 </main>
 
+<% if (proyectos.length > 0) { %>
 <div class="cardsContainer col-md-9 ms-sm-auto col-lg-10 px-md-4"> <!--  -->
+  <% proyectos.forEach(function(value) { %> 
   <div class="card openSans shadow dashboardCard">
     <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
     <div class="card-body">
-      <h5 class="d-inline openSans clienteTitle"><strong>Cliente</strong></h5>
-      <h5 class="d-inline openSans clienteTitle">- Persona responsable</h5>
+      <h5 class="d-inline openSans clienteTitle"><strong><%= value.razon_social %></strong></h5>
+      <h5 class="d-inline openSans clienteTitle"><%= value.responsable_empresa %></h5>
       <p class="fecha openSans">7/10/2021</p>
       <div class="saldo">
         <p class="d-inline openSans">Saldo: </p>
-        <p class="d-inline openSans">$000000</p>
+        <p class="d-inline openSans"><%= value.Saldo %></p>
       </div>
       <span class="dot dotWIP"></span></br>
-      <a href="#" class="btn btn-primary bc546bff openSans"><strong>Ver Proyecto</strong></a>
+      <a href="/cliente/<%= value.id_cliente %>" class="btn btn-primary bc546bff openSans"><strong>Ver Proyecto</strong></a>
     </div>
   </div>
-  <div class="card openSans shadow dashboardCard">
-    <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
-    <div class="card-body">
-      <h5 class="d-inline openSans clienteTitle"><strong>Cliente</strong></h5>
-      <h5 class="d-inline openSans clienteTitle">- Persona responsable</h5>
-      <p class="fecha openSans">7/10/2021</p>
-      <div class="saldo">
-        <p class="d-inline openSans">Saldo: </p>
-        <p class="d-inline openSans">$000000</p>
-      </div>
-      <span class="dot dotWIF"></span></br>
-      <a href="#" class="btn btn-primary bc546bff openSans"><strong>Ver Proyecto</strong></a>
-    </div>
-  </div>
-  <div class="card openSans shadow dashboardCard">
-    <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
-    <div class="card-body">
-      <h5 class="d-inline openSans clienteTitle"><strong>Cliente</strong></h5>
-      <h5 class="d-inline openSans clienteTitle">- Persona responsable</h5>
-      <p class="fecha openSans">7/10/2021</p>
-      <div class="saldo">
-        <p class="d-inline openSans">Saldo: </p>
-        <p class="d-inline openSans">$000000</p>
-      </div>
-      <span class="dot dotCM"></span></br>
-      <a href="#" class="btn btn-primary bc546bff openSans"><strong>Ver Proyecto</strong></a>
-    </div>
-  </div>
+  <% }) %>
 </div>
+<% } else { %>
+  <h1>No hay proyectos cargados.</h1>
+<% } %>
 
 <script
   src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
