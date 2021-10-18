@@ -1,5 +1,7 @@
 const express = require('express');
 let mysql = require('mysql');
+const moment = require('moment');
+moment.locale('es');
 
 let connection = mysql.createConnection({
     host: 'localhost',
@@ -12,7 +14,7 @@ connection.connect(function(error){
     if(error){
         throw error;
     } else {
-        console.log("Conección exitosa")
+        console.log("Conexión exitosa")
     }
 })
 // connection.query('SELECT distinct email FROM users', function(error, rows){
@@ -63,15 +65,31 @@ connection.connect(function(error){
 //     }                    
 // })
 
-connection.query('SELECT par.id_cliente, par.razon_social, par.responsable_empresa, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente group by 1,2,3', function(error, rows){   
+connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente', function(error, rows){   
     if (error) {
         throw error
     } else {
-        let proyectos = rows.map(function(e) {
-            return e
-        })
-        proyectos.forEach(element => {
-            console.log(element.razon_social);
-        });
+        //console.log(rows)
+        //let tfa = rows.filter(function(p){return p.tipo == 'tfa'})
+        let cliente = rows.filter(function(p){return p.id_cliente == 51})
+        //console.log(cliente)
+        let fechas = cliente.map(e=>moment(e.fecha_eta).format('l'))
+
+        let order = fechas.sort(function(a,b){return a.getTime() - b.getTime()});
+        console.log(fechas)
+        // let etapaRow = cliente.map(function(value){
+        //          let dates = moment(value.fecha_eta).format('l');
+        //          //console.log(moment().min(dates));
+        //         //  let today = moment().format('l');
+        //         //  let menorFecha = moment().subtract(dates, today);
+        //         //  console.log(menorFecha.format('l'));
+        //      })
+        //let etapaRow = etapa.map(e=>e.titulo)
+        // let etapaFecha = etapa.map(e=>e.fecha_eta)
+        // let etapaRow = etapa.forEach(function(value){
+        //     console.log(`${value.titulo} - ${value.fecha_eta}`)
+        // })
+        //console.log(etapaRow)
+        //console.log(etapaFecha)
     }
 }); 

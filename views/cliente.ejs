@@ -22,7 +22,7 @@
             <a href="javascript:window.history.back();" class="link-blanco"><span class="material-icons text-decoration-none">arrow_back</span></a>
         </div>
         <div class="text-end">
-            <span><%= razon %></span>
+            <spa class="letra-header-1" style="font-size: 20px" ><%= responsable %></span>
         </div>
         <h5 class="main-title"><%= razon %></h5>
         <p>Fecha de inicio - <%= fecha %></p>
@@ -59,34 +59,28 @@
                                     <p class="card-text"><i class="bi bi-arrow-down-up"></i></p>
                                 </div>
                             <table>
+                                <div class="container">
                                     <th>
-                                        <td class="card-text" style="color: blue;">Concepto</td>
+                                        <td class="evento">Concepto</td>
+                                    </th>
+                                    <th>
+                                        <td class="evento">Monto</td>
                                     </th>
                                     
-                                    <% concepto.forEach(function(value) {%>
+                                    <% cliente.forEach(function(value) {%>
                                         <tr>
                                         <td>
-                                    <div class="col-sm-5">
-                                        <span class="card-text" style="color: blue;"><%= value %></span>
+                                    <div class="evento">
+                                        <span ><%= value.destinatario %></span>
+                                        <span><%= value.monto %></span>
                                     </div>
                                         </td>
                                         </tr>
+                                    </div>
                                         <% }) %> 
+                                
                             </table>
-                            <table>
-                                <th>
-                                    <td class="card-text" style="color: blue;">Monto</td>
-                                </th>
-                                <% movimientos.forEach(function(value) {%>
-                                <tr>
-                                    <td>
-                                <div class="col-sm-5">
-                                    <span class="card-text" style="color: blue;"><%= value %></span>
-                                </div>
-                                    </td>
-                                </tr>
-                                <% }) %>                                                                      
-                        </table>
+                            
                             </div>
                         </div>                        
                     </div>
@@ -99,7 +93,23 @@
                         </div>
                         <h6 class="card-subtitle mb-2">Contrato vigente</h6>
                         <div class="container">
-                            <div class="evento">
+                            <% etapa.forEach(function(value) {%>
+                                <div class="evento">
+                                    <h5><%= value.titulo %></h5>
+                                    <p><%= moment(value.fecha_eta).format('l') %></p>                                    
+                                </div>
+                                <div class="infoExtra">
+                                    <p><%= value.descripcion %></p>
+                                </div>
+                            <% }); %>
+                          <!-- <div class="evento">
+                                <h5>Reunión</h5>
+                                <p>0/0</p>
+                            </div>
+                            <div class="infoExtra">
+                                <p>Información extra sobre el evento</p>
+                            </div>
+                             <div class="evento">
                                 <h5>Reunión</h5>
                                 <p>0/0</p>
                             </div>
@@ -119,15 +129,8 @@
                             </div>
                             <div class="infoExtra">
                                 <p>Información extra sobre el evento</p>
-                            </div>
-                            <div class="evento">
-                                <h5>Reunión</h5>
-                                <p>0/0</p>
-                            </div>
-                            <div class="infoExtra">
-                                <p>Información extra sobre el evento</p>
-                            </div>
-                        </div>
+                            </div>-->
+                        </div> 
                     </div>
                 </div>
                 <div class="card m-4 shadow">
@@ -138,7 +141,13 @@
                         </div>
                         <h6 class="card-subtitle mb-2">Contrato vigente</h6>
                         <div class="container">
-                            <div class="timeline">
+                            <% tfa.forEach(function(value) {%>
+                                <div class="evento">
+                                    <h5><%= value.titulo %></h5>
+                                    <p><%= moment(value.fecha_eta).format('l') %></p>                        
+                                </div>
+                            <% }); %>
+                            <!-- <div class="timeline">
                                 <div class="timeline-row">
                                     <div class="timeline-content">
                                         <h4>Reunión</h4>
@@ -163,7 +172,7 @@
                                         <p>0/0</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -199,12 +208,22 @@
                 </div>
                 <div id="nuevaEtapa" class="card my-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button onclick="ocultarNuevaEtapa()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaEtapa()"><i class="bi bi-arrow-left-short"></i></button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir Etapa del proyecto</h5>
                         </div>
-                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
-                        <div class="container">
+                        <form action="/etapa_tfa/<%= id %>" method="POST">
+                            <select name="tipo" id="">
+                                <option value="etapa">Etapa</option>
+                                <option value="TFA" disabled>TFA</option>
+                            </select></br>
+                            <input type="text" placeholder="Título" name="titulo">
+                            <input type="date" placeholder="Fecha (D/M/A)" name="fecha">
+                            <input type="text" placeholder="Descripción" name="descripcion">
+                            <input class="añadir" type="submit" value="Añadir">
+                        </form>
+                        <!--<h6 class="card-subtitle mb-2">Contrato vigente</h6>-->
+                        <!-- <div class="container">
                             <div class="timeline">
                                 <div class="timeline-row">
                                     <div class="timeline-content">
@@ -231,16 +250,26 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div id="nuevaTFA" class="card m-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button onclick="ocultarNuevaTFA()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaTFA()"><i class="bi bi-arrow-left-short"></i></button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir TFA</h5>
                         </div>
-                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <form action="/etapa_tfa/<%= id %>" method="POST">
+                            <select name="tipo" id="">
+                                <option value="etapa" disabled>Etapa</option>
+                                <option value="tfa">TFA</option>
+                            </select></br>
+                            <input type="text" placeholder="Título" name="titulo">
+                            <input type="date" placeholder="Fecha (D/M/A)" name="fecha">
+                            <input type="text" placeholder="Descripción" name="descripcion">
+                            <input class="añadir" type="submit" value="Añadir">
+                        </form>
+                        <!-- <h6 class="card-subtitle mb-2">Contrato vigente</h6>
                         <div class="container">
                             <div class="timeline">
                                 <div class="timeline-row">
@@ -268,7 +297,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
