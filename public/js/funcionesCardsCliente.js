@@ -33,70 +33,70 @@ function ocultarNuevaTFA() {
 // Filtros por categoría de cards en DASHBOARD
 
 function mostrarWIP() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("WIPcard").classList.remove('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarWIF() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("WIPcard").classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.remove('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarCM() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.remove('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarDMT() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.remove('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarAP() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.remove('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarFinalizados() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.remove('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.remove('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('displayNone');
 }
 
 function mostrarOthers() {
-    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
-    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('displayNone');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.remove('displayNone');
 }

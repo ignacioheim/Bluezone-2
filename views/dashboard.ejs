@@ -98,31 +98,31 @@
     <h1 class="h2">Proyectos</h1>
     <div class="cardAdd cardSemaforo shadow">
       <button onclick="mostrarWIP()">
-        <span class="dot dotWIP marginSemaforo"></span>
+        <span class="dot dotWIPreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>WIP</strong></p>
       </button>
       <button onclick="mostrarWIF()">
-        <span class="dot dotWIF marginSemaforo"></span>
+        <span class="dot dotWIFreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>WIF</strong></p>
       </button>
       <button onclick="mostrarCM()">
-        <span class="dot dotCM marginSemaforo"></span>
+        <span class="dot dotCMreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>CM</strong></p>
       </button>
       <button onclick="mostrarDMT()">
-        <span class="dot dotDMT marginSemaforo"></span>
+        <span class="dot dotDMTreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>DMT</strong></p>
       </button>
       <button onclick="mostrarAP()">
-        <span class="dot dotAP marginSemaforo"></span>
+        <span class="dot dotAPreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>AP</strong></p>
       </button>
       <button onclick="mostrarFinalizados()">
-        <span class="dot dotFinalizado marginSemaforo"></span>
+        <span class="dot dotFinalizadoreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>Finalizado</strong></p>
       </button>
       <button onclick="mostrarOthers()">
-        <span class="dot dotOthers marginSemaforo"></span>
+        <span class="dot dotOthersreference marginSemaforo"></span>
         <p class="d-inline marginSemaforo"><strong>Others</strong></p>
       </button>
     </div>
@@ -132,7 +132,7 @@
 <% if (proyectos.length > 0) { %>
 <div class="cardsContainer mx-5"> <!--  -->
   <% proyectos.forEach(function(value) { %> 
-  <div class="cardAdd openSans shadow">
+  <div class="cardAdd openSans shadow WIPcard">
     <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
     <div class="card-body">
       <h5 class="d-inline openSans clienteTitle"><strong><%= value.razon_social %></strong></h5>
