@@ -199,7 +199,7 @@ app.get('/nuevo-cliente', (req,res)=>{
 app.get('/cliente/:id', (req,res)=>{
     if(req.session.loggedin) {
         const id = parseInt(req.params.id);
-        if (id > 0) {
+        if (id > 0) { // MODIFICAR UNION DE TABLAS //
             connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente where par.id_cliente = ?', [id], function(error, rows){   
                 if (error) {
                     throw error
@@ -244,7 +244,7 @@ app.get('/cliente/:id', (req,res)=>{
                     login:true,
                     name:req.session.name,
                     saldo: saldo,
-                    //cliente: cliente,
+                    cliente: cliente,
                     movimientos: movimientos,
                     concepto: concepto,
                    // transac: transac,

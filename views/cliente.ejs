@@ -62,19 +62,13 @@
                                     <h4>Concepto</h4>
                                     <h4>Monto</h4>
                                 </div>
-                                <% movimientos.forEach(function(value) {%>
+                                <% cliente.forEach(function(value) {%>
                                 <div class="evento my-4">
-                                    <span class="item"><%= value %></span>
-                                
+                                    <span class="item"><%= value.destinatario %></span>
+                                    <span class="item"><%= value.monto %></span>
                                 </div>
                                 <% }) %> 
-                                <% concepto.forEach(function(value) {%>
-                                    <div class="evento my-4">
-                                        <span class="item"><%= value %></span>
-                                        
-                                    </div>
-                                    <% }) %> 
-                          
+                                                    
                             
                             </div>
                         </div>                        
