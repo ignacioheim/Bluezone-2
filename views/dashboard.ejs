@@ -119,11 +119,11 @@
 <div class="cardsContainer col-md-9 ms-sm-auto col-lg-10 px-md-4"> <!--  -->
   <% proyectos.forEach(function(value) { %> 
   <div class="card openSans shadow dashboardCard">
-    <img class="mx-auto my-1" src="/image/logo-placeholder-1.png" alt="Client logo" />
+    <img id="imagen-1" class="mx-auto my-1" src="/uploads/<%= value.imagen %>" alt="Cliente logo">
     <div class="card-body">
       <h5 class="d-inline openSans clienteTitle"><strong><%= value.razon_social %></strong></h5>
       <h5 class="d-inline openSans clienteTitle"><%= value.responsable_empresa %></h5>
-      <p class="fecha openSans">7/10/2021</p>
+      <p class="fecha openSans"><%= value.fecha_eta %></p><p class="fecha openSans"><%= value.descripcion %></p>
       <div class="saldo">
         <p class="d-inline openSans">Saldo: </p>
         <p class="d-inline openSans"><%= value.Saldo %></p>

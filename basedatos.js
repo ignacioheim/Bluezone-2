@@ -65,31 +65,34 @@ connection.connect(function(error){
 //     }                    
 // })
 
-connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente', function(error, rows){   
+connection.query('SELECT par.id_cliente, par.razon_social, par.fecha_inicio, par.email, par.number, par.responsable_empresa, tra.transaccion, tra.destinatario, tra.fecha_tran, tra.monto, eta.tipo, eta.fecha_eta, eta.titulo, eta.descripcion FROM party_id as PAR left join (select distinct id_cliente, monto, destinatario, transaccion, fecha_tran from transacciones) as TRA on TRA.id_cliente = PAR.id_cliente left join (select id_cliente, tipo, fecha_eta, titulo, descripcion from etapa_tfa) as ETA on ETA.id_cliente = PAR.id_cliente', function(error, rows){   
+//connection.query('SELECT * from transacciones', function(error, rows){   
     if (error) {
         throw error
     } else {
-        //console.log(rows)
+    //    console.log(rows)
         //let tfa = rows.filter(function(p){return p.tipo == 'tfa'})
-        let cliente = rows.filter(function(p){return p.id_cliente == 51})
-        //console.log(cliente)
-        let fechas = cliente.map(e=>moment(e.fecha_eta).format('l'))
-
-        let order = fechas.sort(function(a,b){return a.getTime() - b.getTime()});
-        console.log(fechas)
-        // let etapaRow = cliente.map(function(value){
-        //          let dates = moment(value.fecha_eta).format('l');
-        //          //console.log(moment().min(dates));
-        //         //  let today = moment().format('l');
-        //         //  let menorFecha = moment().subtract(dates, today);
-        //         //  console.log(menorFecha.format('l'));
-        //      })
-        //let etapaRow = etapa.map(e=>e.titulo)
-        // let etapaFecha = etapa.map(e=>e.fecha_eta)
-        // let etapaRow = etapa.forEach(function(value){
-        //     console.log(`${value.titulo} - ${value.fecha_eta}`)
-        // })
-        //console.log(etapaRow)
-        //console.log(etapaFecha)
+        let cliente = rows.filter(function(p){return p.id_cliente == 61})
+        console.log(cliente)
+         //let imagen = cliente.map(e=>e.imagen)
+         //console.log(imagen);
+         let movimientos = cliente.map(e=>e.monto)
+         console.log(movimientos)
+        // let order = fechas.sort(function(a,b){return a.getTime() - b.getTime()});
+        // console.log(fechas)
+        // // let etapaRow = cliente.map(function(value){
+        // //          let dates = moment(value.fecha_eta).format('l');
+        // //          //console.log(moment().min(dates));
+        // //         //  let today = moment().format('l');
+        // //         //  let menorFecha = moment().subtract(dates, today);
+        // //         //  console.log(menorFecha.format('l'));
+        // //      })
+        // //let etapaRow = etapa.map(e=>e.titulo)
+        // // let etapaFecha = etapa.map(e=>e.fecha_eta)
+        // // let etapaRow = etapa.forEach(function(value){
+        // //     console.log(`${value.titulo} - ${value.fecha_eta}`)
+        // // })
+        // //console.log(etapaRow)
+        // //console.log(etapaFecha)
     }
 }); 

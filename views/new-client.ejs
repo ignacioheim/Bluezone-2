@@ -100,7 +100,7 @@
   </main>
 
   <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <form action="/create" method="POST">
+    <form action="/create" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label>Nombre de la empresa</label>
           <input type="text" class="form-control" placeholder="Ingresar nombre" name="companyName" required>
@@ -161,7 +161,7 @@
             </select>
           </br>
           <label for="myfile">Seleccionar imagen </label>
-        <input type="file" id="myfile" name="archivo" class="form-control">
+        <input type="file" id="myfile" name="image" class="form-control">
         </br>
         <button type="submit" class="btn btn-primary">Crear</button>
         

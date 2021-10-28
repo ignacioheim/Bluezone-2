@@ -16,7 +16,7 @@
   </header>
 
 
-<div class="row">
+<div class="row fixed-row">
     <div class="container-top azul">
         <div class="text-start m-1">
             <a href="javascript:window.history.back();" class="link-blanco"><span class="material-icons text-decoration-none">arrow_back</span></a>
@@ -58,28 +58,23 @@
                                 <div class="col-sm-2 green">
                                     <p class="card-text"><i class="bi bi-arrow-down-up"></i></p>
                                 </div>
-                            <table>
-                                <div class="container">
-                                    <th>
-                                        <td class="evento">Concepto</td>
-                                    </th>
-                                    <th>
-                                        <td class="evento">Monto</td>
-                                    </th>
-                                    
-                                    <% cliente.forEach(function(value) {%>
-                                        <tr>
-                                        <td>
-                                    <div class="evento">
-                                        <span ><%= value.destinatario %></span>
-                                        <span><%= value.monto %></span>
-                                    </div>
-                                        </td>
-                                        </tr>
-                                    </div>
-                                        <% }) %> 
+                                <div class="flex">
+                                    <h4>Concepto</h4>
+                                    <h4>Monto</h4>
+                                </div>
+                                <% movimientos.forEach(function(value) {%>
+                                <div class="evento my-4">
+                                    <span class="item"><%= value %></span>
                                 
-                            </table>
+                                </div>
+                                <% }) %> 
+                                <% concepto.forEach(function(value) {%>
+                                    <div class="evento my-4">
+                                        <span class="item"><%= value %></span>
+                                        
+                                    </div>
+                                    <% }) %> 
+                          
                             
                             </div>
                         </div>                        
@@ -139,7 +134,7 @@
                             <h5 class="card-title">TFA</h5>
                             <button onclick="mostrarNuevaTFA()">+</button>
                         </div>
-                        <h6 class="card-subtitle mb-2">Contrato vigente</h6>
+                        <!-- <h6 class="card-subtitle mb-2">Contrato vigente</h6> -->
                         <div class="container">
                             <% tfa.forEach(function(value) {%>
                                 <div class="evento">
@@ -181,9 +176,9 @@
                 <div class="card m-4 shadow card-saldo">
                     <div class="card-body">
                         <div class="card-header">
-                            <h5 class="card-title">Saldo</h5>
+                            <h5 class="card-title center">Saldo</h5>
                         </div>
-                        <h5 class="card-subtitle mb-2 green"><%= saldo %></h5>
+                        <h5 class="card-subtitle mb-2 green center"><%= saldo %></h5>
                     </div>
                 </div>
             </div>

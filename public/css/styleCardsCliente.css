@@ -291,3 +291,12 @@
 .noMostrar {
     visibility: hidden;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    margin-left: 90px;
+}

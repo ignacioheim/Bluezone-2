@@ -116,6 +116,7 @@ header{
   color: white;
   font-size: 34px;
   text-decoration: none;
+  margin-right: 20px;
 }
 
 a:hover{
@@ -124,4 +125,11 @@ a:hover{
 
 .menu-canva{
   font-size: 26px;
+}
+
+#imagen-1 { 
+  max-height: 150px;
+  max-width: 200px;
+  width: 120px;
+  height: 120px;
 }

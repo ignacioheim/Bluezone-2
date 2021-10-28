@@ -1,6 +1,7 @@
-// 1 - Invoco a express
+// 1 - Invoco a express, moment y multer
 const express = require('express');
 const path = require('path');
+const multer = require('multer');
 const moment = require('moment');
 moment.locale('es')
 
@@ -24,6 +25,19 @@ dotenv.config({path:'./env/.env'});
 app.use(express.static('public'));
 app.use(express.static(__dirname + '/public'));
 app.use("/public", express.static('./public/'));
+
+// Midleware de Multer para cargar fotos
+const storage = multer.diskStorage({
+    destination: 'public/uploads',
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
+
+app.use(multer({
+    storage: storage,
+    dest: 'public/uploads'
+}).single('image'));
 
 // 5 - Se establece el motor de plantilla
 app.set('view engine', 'ejs');
@@ -138,7 +152,7 @@ app.post('/auth', async (req,res)=>{
 // 11 - Auth páginas
 app.get('/home', function(req,res) {
     if(req.session.loggedin){
-        connection.query('SELECT par.id_cliente, par.razon_social, par.responsable_empresa, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente group by 1,2,3', function(error, rows){   
+        connection.query('SELECT par.id_cliente, par.razon_social, case when eta.fecha_eta is null then "Sin fecha próxima a vencer" else eta.fecha_eta end fecha_eta, eta.descripcion, par.responsable_empresa, par.imagen, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join (select id_cliente, descripcion, min(fecha_eta) as fecha_eta from etapa_tfa where fecha_eta >= CURRENT_DATE() group by 1,2) as ETA on ETA.id_cliente = PAR.id_cliente group by 1,2,3,4,5 order by fecha_eta asc', function(error, rows){   
             if (error) {
                 throw error
             } else {
@@ -191,7 +205,7 @@ app.get('/cliente/:id', (req,res)=>{
                     throw error
                 } else {
                 let cliente = rows.filter(function(p){return p.id_cliente == id});   
-                //console.log(cliente)
+                console.log(cliente)
                 console.log(id)
                 console.log(cliente[0].id_cliente)
                 // DATOS GENERALES DEL CLIENTE
@@ -211,16 +225,18 @@ app.get('/cliente/:id', (req,res)=>{
                 } 
                 // DATOS DE TRANSACCIONES
                 let movimientos = cliente.map(e=>e.monto)
+                //console.log(transac);
                 const reducer = (previousValue, currentValue) => previousValue + currentValue;
                 let saldo = movimientos.reduce(reducer)
-                //let concepto = cliente.map(e=>e.destinatario)
+                let concepto = cliente.map(e=>e.destinatario)
                 // console.log(movimientos)
                 // console.log(saldo)
                 
                 // DATOS ETAPAS y TFA
                 let etapa = rows.filter(function(p){return p.tipo == 'etapa'})
                 let tfa = rows.filter(function(p){return p.tipo == 'tfa'})
-
+                 console.log(etapa);
+                console.log(tfa);
                 res.render('cliente', {
                     razon : razonSocial,
                     fecha : `${dd+'/'+mm+'/'+yyyy}`,
@@ -228,9 +244,10 @@ app.get('/cliente/:id', (req,res)=>{
                     login:true,
                     name:req.session.name,
                     saldo: saldo,
-                    cliente: cliente,
-                    //movimientos: movimientos,
-                    //concepto: concepto,
+                    //cliente: cliente,
+                    movimientos: movimientos,
+                    concepto: concepto,
+                   // transac: transac,
                     responsable: responsable,
                     etapa: etapa,
                     moment: moment,
@@ -262,7 +279,9 @@ app.post('/create', (req,res)=>{
     const otherLinks = req.body.otherLinks;
     const web = req.body.web;
     const tipo_proyecto = req.body.proyectos;
-    const imagen = req.body.archivo;
+    const file = req.file.originalname
+    //console.log(file);
+   // const imagen = req.body.image;
     connection.query('INSERT INTO party_id SET ?', {
         razon_social:companyName, 
         responsable_empresa:responsableName,
@@ -276,7 +295,7 @@ app.post('/create', (req,res)=>{
         other_links: otherLinks,
         web:web,
         tipo_proyecto: tipo_proyecto,
-        imagen: imagen
+        imagen: file
         },
          async (error, result) => {
             if(error) {
