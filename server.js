@@ -1,6 +1,9 @@
-// 1 - Invoco a express
+// 1 - Invoco a express, moment y multer
 const express = require('express');
 const path = require('path');
+const multer = require('multer');
+const moment = require('moment');
+moment.locale('es')
 
 const app = express();
 const PORT = 5000;
@@ -22,6 +25,19 @@ dotenv.config({path:'./env/.env'});
 app.use(express.static('public'));
 app.use(express.static(__dirname + '/public'));
 app.use("/public", express.static('./public/'));
+
+// Midleware de Multer para cargar fotos
+const storage = multer.diskStorage({
+    destination: 'public/uploads',
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
+
+app.use(multer({
+    storage: storage,
+    dest: 'public/uploads'
+}).single('image'));
 
 // 5 - Se establece el motor de plantilla
 app.set('view engine', 'ejs');
@@ -136,7 +152,7 @@ app.post('/auth', async (req,res)=>{
 // 11 - Auth páginas
 app.get('/home', function(req,res) {
     if(req.session.loggedin){
-        connection.query('SELECT par.id_cliente, par.razon_social, par.responsable_empresa, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente group by 1,2,3', function(error, rows){   
+        connection.query('SELECT par.id_cliente, par.razon_social, case when eta.fecha_eta is null then "Sin fecha próxima a vencer" else eta.fecha_eta end fecha_eta, eta.descripcion, par.responsable_empresa, par.imagen, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join (select id_cliente, descripcion, min(fecha_eta) as fecha_eta from etapa_tfa where fecha_eta >= CURRENT_DATE() group by 1,2) as ETA on ETA.id_cliente = PAR.id_cliente group by 1,2,3,4,5 order by fecha_eta asc', function(error, rows){   
             if (error) {
                 throw error
             } else {
@@ -183,13 +199,13 @@ app.get('/nuevo-cliente', (req,res)=>{
 app.get('/cliente/:id', (req,res)=>{
     if(req.session.loggedin) {
         const id = parseInt(req.params.id);
-        if (id > 0) {
-            connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente where PAR.id_cliente = ?', [id], function(error, rows){   
+        if (id > 0) { // MODIFICAR UNION DE TABLAS //
+            connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente where par.id_cliente = ?', [id], function(error, rows){   
                 if (error) {
                     throw error
                 } else {
                 let cliente = rows.filter(function(p){return p.id_cliente == id});   
-                //console.log(cliente)
+                console.log(cliente)
                 console.log(id)
                 console.log(cliente[0].id_cliente)
                 // DATOS GENERALES DEL CLIENTE
@@ -197,6 +213,7 @@ app.get('/cliente/:id', (req,res)=>{
                 //console.log(razonSocial)
                 let fecha_inicio = cliente[0].fecha_inicio;
                 let id_cliente = cliente[0].id_cliente;
+                let responsable = cliente[0].responsable_empresa
                 let dd = fecha_inicio.getDate();
                 let mm = fecha_inicio.getMonth()+1; 
                 let yyyy = fecha_inicio.getFullYear();
@@ -208,12 +225,18 @@ app.get('/cliente/:id', (req,res)=>{
                 } 
                 // DATOS DE TRANSACCIONES
                 let movimientos = cliente.map(e=>e.monto)
+                //console.log(transac);
                 const reducer = (previousValue, currentValue) => previousValue + currentValue;
                 let saldo = movimientos.reduce(reducer)
                 let concepto = cliente.map(e=>e.destinatario)
-                console.log(movimientos)
-                console.log(saldo)
-
+                // console.log(movimientos)
+                // console.log(saldo)
+                
+                // DATOS ETAPAS y TFA
+                let etapa = rows.filter(function(p){return p.tipo == 'etapa'})
+                let tfa = rows.filter(function(p){return p.tipo == 'tfa'})
+                 console.log(etapa);
+                console.log(tfa);
                 res.render('cliente', {
                     razon : razonSocial,
                     fecha : `${dd+'/'+mm+'/'+yyyy}`,
@@ -221,8 +244,14 @@ app.get('/cliente/:id', (req,res)=>{
                     login:true,
                     name:req.session.name,
                     saldo: saldo,
+                    cliente: cliente,
                     movimientos: movimientos,
-                    concepto: concepto
+                    concepto: concepto,
+                   // transac: transac,
+                    responsable: responsable,
+                    etapa: etapa,
+                    moment: moment,
+                    tfa: tfa
                 })
             }
         })      
@@ -249,6 +278,10 @@ app.post('/create', (req,res)=>{
     const googleDrive = req.body.googleDrive;
     const otherLinks = req.body.otherLinks;
     const web = req.body.web;
+    const tipo_proyecto = req.body.proyectos;
+    const file = req.file.originalname
+    //console.log(file);
+   // const imagen = req.body.image;
     connection.query('INSERT INTO party_id SET ?', {
         razon_social:companyName, 
         responsable_empresa:responsableName,
@@ -260,7 +293,9 @@ app.post('/create', (req,res)=>{
         number: phoneNumber,
         google_drive: googleDrive,
         other_links: otherLinks,
-        web:web
+        web:web,
+        tipo_proyecto: tipo_proyecto,
+        imagen: file
         },
          async (error, result) => {
             if(error) {
@@ -291,7 +326,7 @@ app.post('/transaccion/:id', (req,res)=>{
                         id_cliente: cliente[0].id_cliente,
                         transaccion: transaccion,
                         destinatario: destinatario,
-                        fecha: fecha,
+                        fecha_tran: fecha,
                         monto:monto
                     },
                     async (error, result) => {
@@ -314,3 +349,43 @@ app.post('/transaccion/:id', (req,res)=>{
     }
 });
 
+// 17 - Creo el el post de una nueva Etapa o TFA --> UNA SOLA TABLA PARA AMBOS CONCEPTOS <---
+app.post('/etapa_tfa/:id', (req,res)=>{
+    if(req.session.loggedin) {
+        const id = parseInt(req.params.id);
+        if (id > 0) {
+            connection.query('SELECT * FROM party_id where id_cliente = ?', [id], function(error, rows){   
+                if (error) {
+                    throw error
+                } else {
+                    let cliente = rows.filter(function(p){return p.id_cliente == id});   
+                    let tipo = req.body.tipo;
+                    let titulo = req.body.titulo;
+                    let fecha = req.body.fecha;
+                    let descripcion = req.body.descripcion;
+                    connection.query('INSERT INTO etapa_tfa SET ?', {
+                        id_cliente: cliente[0].id_cliente,
+                        tipo: tipo,
+                        fecha_eta: fecha,
+                        titulo: titulo,                        
+                        descripcion:descripcion
+                    },
+                    async (error, result) => {
+                       if(error) {
+                           console.log(error);
+                       } else {
+                        let resultId = result.insertId;
+                        console.log(result);
+                        res.redirect(`/cliente/${id}`); 
+                       } 
+                    });
+            }
+        })      
+        }       
+    } else {
+        res.send('login',{
+            login:false,
+            name:'Debe iniciar sesión'
+        })
+    }
+});

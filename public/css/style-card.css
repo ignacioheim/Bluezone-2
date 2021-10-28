@@ -69,3 +69,7 @@ ul li{
 .color-verde{
     color: rgb(3, 155, 10);
 }
+
+.fixed-row {
+    --bs-gutter-x: 0rem !important;
+}
