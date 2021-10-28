@@ -33,13 +33,13 @@
 .cardsContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
-.dashboardCard {
-    margin-right: 5%;
-    margin-bottom: 1%;
-}
+/*.dashboardCard {*/
+/*    margin-right: 5%;*/
+/*    margin-bottom: 1%;*/
+/*}*/
 
 .dot {
     height: 25px;
