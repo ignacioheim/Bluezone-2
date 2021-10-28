@@ -2,6 +2,10 @@
     font-family: openSans;
 }
 
+.displayNone {
+    display: none;
+}
+
 .clienteTitle {
     font-size: 15px;
 }
@@ -21,8 +25,13 @@
 .cardSemaforo {
     margin-right: 5%;
     flex-direction: row;
-    width: 70%;
+    width: 75%;
     border-radius: 15px 15px 15px 15px;
+}
+
+.cardSemaforo button {
+    border: none;
+    background-color: transparent;
 }
 
 .marginSemaforo {
@@ -75,5 +84,33 @@
 }
 
 .dotOthers {
+    background-color: #747474 !important;
+}
+
+.dotWIPreference {
+    background-color: #4BFF00 !important;
+}
+
+.dotWIFreference {
+    background-color: #546bff !important;
+}
+
+.dotCMreference {
+    background-color: #6E00FF !important;
+}
+
+.dotDMTreference {
+    background-color: #FFC400 !important;
+}
+
+.dotAPreference {
+    background-color: #00E8D0 !important;
+}
+
+.dotFinalizadoreference {
+    background-color: #E80000 !important;
+}
+
+.dotOthersreference {
     background-color: #747474 !important;
 }

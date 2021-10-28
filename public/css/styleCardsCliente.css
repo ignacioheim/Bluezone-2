@@ -1,5 +1,5 @@
 .card {
-    width: 30%;
+    width: 32%;
 }
 
 .card-title {
@@ -292,11 +292,31 @@
     visibility: hidden;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-around;
+.superPosicionRrss{
+    position: absolute;
+    transform: translateX(-200px);
 }
 
-.item {
-    margin-left: 90px;
+.superPosicionContacto{
+    position: absolute;
+    transform: translateX(-55px);
+}
+
+.superPosicionMateriales{
+    position: absolute;
+    transform: translateX(80px);
+}
+
+.flex-submenu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cardsCliente{
+    width: 100%;
+}
+
+.cardAdd{
+    width: 20%;
 }

@@ -6,48 +6,107 @@
     <div class="d-flex w-100 justify-content-between align-items-center m-auto  p-3">
         <a class="letra-header-1" href="/home"> Bluezone</a>
         <di>
-            <span class="letra-header-1">Hola<strong >, <%= name %></strong></span>
+            <span class="letra-header-1">Hola<strong>, <%= name %></strong></span>
             <% } %>
         </di>
-  
+
         <a class="letra-header-1" style="font-size: 20px" href="/logout">Cerrar sesión</a>
     </div>
-  
-  </header>
+
+</header>
 
 
-<div class="row fixed-row">
+
+<div >
     <div class="container-top azul">
-        <div class="text-start m-1">
-            <a href="javascript:window.history.back();" class="link-blanco"><span class="material-icons text-decoration-none">arrow_back</span></a>
+        <div class="text-start mx-3">
+            <a href="javascript:window.history.back();" class="link-blanco"><span
+                        class="material-icons text-decoration-none">arrow_back</span></a>
         </div>
-        <div class="text-end">
-            <spa class="letra-header-1" style="font-size: 20px" ><%= responsable %></span>
+
+        <div class="text-end mx-3">
+            <span><%= razon %></span>
+
         </div>
         <h5 class="main-title"><%= razon %></h5>
         <p>Fecha de inicio - <%= fecha %></p>
         <div class="buttons-links">
-            <div class="d-flex flex-column align-items-center">
-                <span class="material-icons azul icono-redondo p-1">rss_feed</span>
-                <span class="azul sub-menu"> RRSS</span>
+            <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionRrss" id="menuOcultoRrss">
+                <button onclick="mostrarMenu( 'rrss', 'menuOcultoRrss', 'noMostrar' )" class=" azul icono-redondo"> x</button>
+                <div class="container-icono-sub-menu m-1">
+                    <img src="../public/image/instagram.ico" class="material-icons azul icono-redondo p-1"
+                         style="width: 35px; height: 35px"/>
+                    <span class="azul sub-menu"> Instagram</span>
+                </div>
+                <div class="container-icono-sub-menu m-1">
+                    <img src="../public/image/twitter.ico" class="material-icons azul icono-redondo p-1"
+                         style="width: 35px; height: 35px"/>
+                    <span class="azul sub-menu"> Twitter</span>
+                </div>
+                <div class="container-icono-sub-menu m-1">
+                    <img src="../public/image/linkedin.ico" class="material-icons azul icono-redondo p-1"
+                         style="width: 35px; height: 35px"/>
+                    <span class="azul sub-menu"> LinkedIn</span>
+                </div>
+
             </div>
-            <div class="d-flex flex-column align-items-center">
-                <span class="material-icons azul icono-redondo p-1">call</span>
-                <span class="azul sub-menu">Contacto</span>
+            <!-- Menu Contacto-->
+            <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionContacto" id="menuOcultoContacto">
+                <button onclick="mostrarMenu( 'contacto', 'menuOcultoContacto', 'noMostrar' )" class=" azul icono-redondo "> x</button>
+                <div class="container-icono-sub-menu align-items-center d-flex m-1">
+                    <span class="material-icons azul icono-redondo p-1">email</span>
+                    <span class="azul sub-menu"> Email</span>
+                </div>
+                <div class="container-icono-sub-menu align-items-center d-flex m-1">
+                    <span class="material-icons azul icono-redondo p-1">whatsapp</span>
+                    <span class="azul sub-menu"> WhatsApp</span>
+                </div>
+                <div class="container-icono-sub-menu align-items-center d-flex m-1">
+                    <span class="material-icons azul icono-redondo p-1">phone</span>
+                    <span class="azul sub-menu"> Telefono</span>
+                </div>
             </div>
-            <div class="d-flex flex-column align-items-center">
-                <span class="material-icons azul icono-redondo p-1">build</span>
-                <span class="azul sub-menu">Materiales</span>
+            <!-- Menu Materiales-->
+            <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionMateriales"
+                 id="menuOcultoMateriales">
+                <button onclick="mostrarMenu( 'materiales', 'menuOcultoMateriales', 'noMostrar' )" class=" azul icono-redondo"> x</button>
+                <div class="container-icono-sub-menu align-items-center d-flex m-1">
+                    <span class="material-icons azul icono-redondo p-1">add_to_drive</span>
+                    <span class="azul sub-menu"> Drive</span>
+                </div>
+                <div class="container-icono-sub-menu align-items-center d-flex m-1">
+                    <span class="material-icons azul icono-redondo p-1">link</span>
+                    <span class="azul sub-menu"> Links</span>
+                </div>
+            </div>
+            <!--End sub menus-->
+            <div class="d-flex flex-column align-items-center " id="rrss">
+                <button class="material-icons azul icono-redondo p-1"
+                        onclick="mostrarMenu('menuOcultoRrss' , 'rrss', 'noMostrar' )">rss_feed
+                </button>
+                <span class="azul sub-menu my-2"> RRSS</span>
+            </div>
+            <div class="d-flex flex-column align-items-center" id="contacto">
+                <button class="material-icons azul icono-redondo p-1"
+                        onclick="mostrarMenu('menuOcultoContacto' , 'contacto', 'noMostrar' )">call
+                </button>
+                <span class="azul sub-menu my-2">Contacto</span>
+            </div>
+            <div class="d-flex flex-column align-items-center" id="materiales">
+                <button class="material-icons azul icono-redondo p-1"
+                        onclick="mostrarMenu('menuOcultoMateriales' , 'materiales', 'noMostrar' )">build
+                </button>
+                <span class="azul sub-menu my-2">Materiales</span>
             </div>
             <div class="d-flex flex-column align-items-center">
                 <span class="material-icons azul icono-redondo p-1">language</span>
-                <span class="azul sub-menu"> Web </span>
+                <span class="azul sub-menu my-2"> Web </span>
             </div>
         </div>
         <!-- Cards cliente -->
-        <div class="container">
-            <div class="row">
-                <div class="card m-4 shadow">
+        <div>
+            <div class="d-flex">
+                <div class=" m-4 shadow cardsCliente">
                     <div class="card-body">
                         <div class="card-header">
                             <h5 class="card-title">Transacciones recientes</h5>
@@ -58,6 +117,7 @@
                                 <div class="col-sm-2 green">
                                     <p class="card-text"><i class="bi bi-arrow-down-up"></i></p>
                                 </div>
+
                                 <div class="flex">
                                     <h4>Concepto</h4>
                                     <h4>Monto</h4>
@@ -70,11 +130,12 @@
                                 <% }) %> 
                                                     
                             
+
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
-                <div class="card my-4 shadow">
+                <div class="my-4 shadow cardsCliente">
                     <div class="card-body">
                         <div class="card-header">
                             <h5 class="card-title">Etapa del proyecto</h5>
@@ -122,7 +183,7 @@
                         </div> 
                     </div>
                 </div>
-                <div class="card m-4 shadow">
+                <div class=" m-4 shadow cardsCliente">
                     <div class="card-body">
                         <div class="card-header">
                             <h5 class="card-title">TFA</h5>
@@ -167,7 +228,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="card m-4 shadow card-saldo">
+                <div class=" m-4 shadow card-saldo">
                     <div class="card-body">
                         <div class="card-header">
                             <h5 class="card-title center">Saldo</h5>
@@ -179,7 +240,8 @@
             <div class="row">
                 <div id="nuevaTransaccion" class="card m-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button class="flecha-left" onclick="ocultarNuevaTransaccion()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaTransaccion()"><i
+                                    class="bi bi-arrow-left-short"></i></button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir transacción</h5>
                         </div>
