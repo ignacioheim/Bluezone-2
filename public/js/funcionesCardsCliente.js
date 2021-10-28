@@ -29,3 +29,74 @@ function mostrarNuevaTFA() {
 function ocultarNuevaTFA() {
     document.getElementById("nuevaTFA").classList.add('noMostrar');
 }
+
+// Filtros por categoría de cards en DASHBOARD
+
+function mostrarWIP() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarWIF() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarCM() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarDMT() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarAP() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarFinalizados() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.remove('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.add('noMostrar');
+}
+
+function mostrarOthers() {
+    document.getElementsByClassName("dotWIP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotWIF").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotCM").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotDMT").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotAP").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotFinalizados").parentElement.parentElement.classList.add('noMostrar');
+    document.getElementsByClassName("dotOthers").parentElement.parentElement.classList.remove('noMostrar');
+}
