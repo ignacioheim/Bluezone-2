@@ -176,7 +176,7 @@ body{
 
 .card-saldo {
     width: 11%;
-    transform: translate(90%, -110%);
+    transform: translate(-300%, -120%);
 }
 
 .card-saldo .card-body {
