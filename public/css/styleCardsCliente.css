@@ -1,5 +1,9 @@
+body{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+
 .card {
-    width: 32%;
+    width: 30%;
 }
 
 .card-title {
@@ -168,53 +172,6 @@
     transform: rotate(45deg);
 }
 
-/*
-@media (max-width: 992px) {
-    .timeline {
-        padding: 15px;
-    }
-    .timeline:after {
-        border: 0;
-    }
-    .timeline .timeline-row:nth-child(odd) {
-        padding: 0;
-    }
-    .timeline .timeline-row:nth-child(odd) .timeline-time {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0 0 10px 0;
-    }
-    .timeline .timeline-row:nth-child(odd) .timeline-content {
-        margin: 0;
-    }
-    .timeline .timeline-row:nth-child(odd) .timeline-content:before {
-        display: none;
-    }
-    .timeline .timeline-row:nth-child(odd) .timeline-content:after {
-        display: none;
-    }
-    .timeline .timeline-row:nth-child(even) {
-        padding: 0;
-    }
-    .timeline .timeline-row:nth-child(even) .timeline-time {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0 0 10px 0;
-        text-align: left;
-    }
-    .timeline .timeline-row:nth-child(even) .timeline-content {
-        margin: 0;
-    }
-    .timeline .timeline-row:nth-child(even) .timeline-content:before {
-        display: none;
-    }
-    .timeline .timeline-row:nth-child(even) .timeline-content:after {
-        display: none;
-    }
-}*/
-
 /* Card Saldo */
 
 .card-saldo {
@@ -283,7 +240,7 @@
 /* Cards añadir datos cliente */
 
 .card-input {
-    transform: translate(0%, -129%);
+    transform: translate(0%, -478px);
 }
 
 /* No mostrar */
@@ -318,5 +275,14 @@
 }
 
 .cardAdd{
-    width: 20%;
+    width: 90%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.row{
+    justify-content: space-around !important;
+    --bs-gutter-x: 0.5rem !important;
 }

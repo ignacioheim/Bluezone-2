@@ -66,7 +66,7 @@ app.get('/login', function(req,res) {
 app.get('/register', function(req,res) {
     res.render('register')
 });
- 
+
 // 10 - Registración
 app.post('/register', async (req,res)=>{
     const name = req.body.name;
@@ -89,13 +89,13 @@ app.post('/register', async (req,res)=>{
                 alertIcon:"error",
                 showConfirmButton:false,
                 timer:1000,
-                ruta:'register' 
-            })  
-        // SI NO EXISTE, CREO EL USUARIO                                  
+                ruta:'register'
+            })
+        // SI NO EXISTE, CREO EL USUARIO
         } else {
             connection.query('INSERT INTO users SET ?', {email:email, name:name, pass:passwordHaash}, async (error, results) => {
                 if(error || pass != confirmPass){
-                    let message = "Constraseñas incocorrectas"    
+                    let message = "Constraseñas incocorrectas"
                     console.log(message)
                 }  else {
                             res.render('register', {
@@ -105,9 +105,9 @@ app.post('/register', async (req,res)=>{
                                 alertIcon:"success",
                                 showConfirmButton:false,
                                 timer:2000,
-                                ruta:'login' 
+                                ruta:'login'
                             })
-                        }                
+                        }
                     });
         }
     });
@@ -152,11 +152,11 @@ app.post('/auth', async (req,res)=>{
 // 11 - Auth páginas
 app.get('/home', function(req,res) {
     if(req.session.loggedin){
-        connection.query('SELECT par.id_cliente, par.razon_social, case when eta.fecha_eta is null then "Sin fecha próxima a vencer" else eta.fecha_eta end fecha_eta, eta.descripcion, par.responsable_empresa, par.imagen, sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join (select id_cliente, descripcion, min(fecha_eta) as fecha_eta from etapa_tfa where fecha_eta >= CURRENT_DATE() group by 1,2) as ETA on ETA.id_cliente = PAR.id_cliente group by 1,2,3,4,5 order by fecha_eta asc', function(error, rows){   
+        connection.query('SELECT par.id_cliente, par.razon_social, case when eta.fecha_tran is null then "Sin fecha próxima a vencer" else eta.fecha_tran end fecha_tran, eta.descripcion, par.responsable_empresa,sum(ifnull(TRA.monto, 0)) as Saldo FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join (select id_cliente, descripcion, min(fecha) as fecha_tran from etapa_tfa where fecha >= CURRENT_DATE() group by 1,2) as ETA on ETA.id_cliente = PAR.id_cliente group by 1,2,3,4,5 order by fecha_tran asc', function(error, rows){
             if (error) {
                 throw error
             } else {
-                let proyectos = rows.map(function(e) {return e});        
+                let proyectos = rows.map(function(e) {return e});
                 console.log(proyectos.length)
                 res.render('dashboard',{
                 login:true,
@@ -200,11 +200,11 @@ app.get('/cliente/:id', (req,res)=>{
     if(req.session.loggedin) {
         const id = parseInt(req.params.id);
         if (id > 0) { // MODIFICAR UNION DE TABLAS //
-            connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente where par.id_cliente = ?', [id], function(error, rows){   
+            connection.query('SELECT *, par.id_cliente FROM party_id as PAR left join transacciones as TRA on TRA.id_cliente = PAR.id_cliente left join etapa_tfa as ETA on ETA.id_cliente = PAR.id_cliente where par.id_cliente = ?', [id], function(error, rows){
                 if (error) {
                     throw error
                 } else {
-                let cliente = rows.filter(function(p){return p.id_cliente == id});   
+                let cliente = rows.filter(function(p){return p.id_cliente == id});
                 console.log(cliente)
                 console.log(id)
                 console.log(cliente[0].id_cliente)
@@ -215,14 +215,14 @@ app.get('/cliente/:id', (req,res)=>{
                 let id_cliente = cliente[0].id_cliente;
                 let responsable = cliente[0].responsable_empresa
                 let dd = fecha_inicio.getDate();
-                let mm = fecha_inicio.getMonth()+1; 
+                let mm = fecha_inicio.getMonth()+1;
                 let yyyy = fecha_inicio.getFullYear();
                 if(dd<10) {
                     dd='0'+dd;
-                    } 
+                    }
                 if(mm<10) {
                     mm='0'+mm;
-                } 
+                }
                 // DATOS DE TRANSACCIONES
                 let movimientos = cliente.map(e=>e.monto)
                 //console.log(transac);
@@ -231,7 +231,7 @@ app.get('/cliente/:id', (req,res)=>{
                 let concepto = cliente.map(e=>e.destinatario)
                 // console.log(movimientos)
                 // console.log(saldo)
-                
+
                 // DATOS ETAPAS y TFA
                 let etapa = rows.filter(function(p){return p.tipo == 'etapa'})
                 let tfa = rows.filter(function(p){return p.tipo == 'tfa'})
@@ -254,9 +254,9 @@ app.get('/cliente/:id', (req,res)=>{
                     tfa: tfa
                 })
             }
-        })      
-        }  
-     
+        })
+        }
+
     } else {
         res.send('login',{
             login:false,
@@ -283,9 +283,9 @@ app.post('/create', (req,res)=>{
     //console.log(file);
    // const imagen = req.body.image;
     connection.query('INSERT INTO party_id SET ?', {
-        razon_social:companyName, 
+        razon_social:companyName,
         responsable_empresa:responsableName,
-        fecha_inicio:date, 
+        fecha_inicio:date,
         facebook:facebook,
         instagram:instagram,
         twitter:twitter,
@@ -303,8 +303,8 @@ app.post('/create', (req,res)=>{
             } else {
                 let resultId = result.insertId
                 console.log(result);
-                res.redirect(`/cliente/${resultId}`); 
-            }        
+                res.redirect(`/cliente/${resultId}`);
+            }
     });
 });
 
@@ -313,11 +313,11 @@ app.post('/transaccion/:id', (req,res)=>{
     if(req.session.loggedin) {
         const id = parseInt(req.params.id);
         if (id > 0) {
-            connection.query('SELECT * FROM party_id where id_cliente = ?', [id], function(error, rows){   
+            connection.query('SELECT * FROM party_id where id_cliente = ?', [id], function(error, rows){
                 if (error) {
                     throw error
                 } else {
-                    let cliente = rows.filter(function(p){return p.id_cliente == id});   
+                    let cliente = rows.filter(function(p){return p.id_cliente == id});
                     let transaccion = req.body.transaccion;
                     let destinatario = req.body.destinatario;
                     let fecha = req.body.fecha;
@@ -335,12 +335,12 @@ app.post('/transaccion/:id', (req,res)=>{
                        } else {
                         let resultId = result.insertId;
                         console.log(result);
-                        res.redirect(`/cliente/${id}`); 
-                       } 
+                        res.redirect(`/cliente/${id}`);
+                       }
                     });
             }
-        })      
-        }       
+        })
+        }
     } else {
         res.send('login',{
             login:false,
@@ -354,11 +354,11 @@ app.post('/etapa_tfa/:id', (req,res)=>{
     if(req.session.loggedin) {
         const id = parseInt(req.params.id);
         if (id > 0) {
-            connection.query('SELECT * FROM party_id where id_cliente = ?', [id], function(error, rows){   
+            connection.query('SELECT * FROM party_id where id_cliente = ?', [id], function(error, rows){
                 if (error) {
                     throw error
                 } else {
-                    let cliente = rows.filter(function(p){return p.id_cliente == id});   
+                    let cliente = rows.filter(function(p){return p.id_cliente == id});
                     let tipo = req.body.tipo;
                     let titulo = req.body.titulo;
                     let fecha = req.body.fecha;
@@ -367,7 +367,7 @@ app.post('/etapa_tfa/:id', (req,res)=>{
                         id_cliente: cliente[0].id_cliente,
                         tipo: tipo,
                         fecha_eta: fecha,
-                        titulo: titulo,                        
+                        titulo: titulo,
                         descripcion:descripcion
                     },
                     async (error, result) => {
@@ -376,12 +376,12 @@ app.post('/etapa_tfa/:id', (req,res)=>{
                        } else {
                         let resultId = result.insertId;
                         console.log(result);
-                        res.redirect(`/cliente/${id}`); 
-                       } 
+                        res.redirect(`/cliente/${id}`);
+                       }
                     });
             }
-        })      
-        }       
+        })
+        }
     } else {
         res.send('login',{
             login:false,

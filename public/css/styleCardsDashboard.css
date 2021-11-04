@@ -1,5 +1,9 @@
-.openSans {
-    font-family: openSans;
+/*.openSans {*/
+/*    font-family: openSans;*/
+/*}*/
+
+body{
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
 
 .displayNone {
@@ -29,6 +33,7 @@
     border-radius: 15px 15px 15px 15px;
 }
 
+
 .cardSemaforo button {
     border: none;
     background-color: transparent;
@@ -40,9 +45,9 @@
 }
 
 .cardsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }
 
 .dashboardCard {

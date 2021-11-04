@@ -16,8 +16,7 @@
 </header>
 
 
-
-<div >
+<div>
     <div class="container-top azul">
         <div class="text-start mx-3">
             <a href="javascript:window.history.back();" class="link-blanco"><span
@@ -32,51 +31,74 @@
         <p>Fecha de inicio - <%= fecha %></p>
         <div class="buttons-links">
             <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionRrss" id="menuOcultoRrss">
-                <button onclick="mostrarMenu( 'rrss', 'menuOcultoRrss', 'noMostrar' )" class=" azul icono-redondo"> x</button>
+                <button onclick="mostrarMenu( 'rrss', 'menuOcultoRrss', 'noMostrar' )" class=" azul icono-cerrar"> x
+                </button>
                 <div class="container-icono-sub-menu m-1">
-                    <img src="../public/image/instagram.ico" class="material-icons azul icono-redondo p-1"
-                         style="width: 35px; height: 35px"/>
-                    <span class="azul sub-menu"> Instagram</span>
+                    <a href="#" target="_blank">
+                        <img src="../public/image/instagram.ico" class="material-icons azul icono-redondo p-1"
+                             style="width: 35px; height: 35px"/>
+                        <span class="azul sub-menu"> Instagram</span>
+                    </a>
+
                 </div>
                 <div class="container-icono-sub-menu m-1">
-                    <img src="../public/image/twitter.ico" class="material-icons azul icono-redondo p-1"
-                         style="width: 35px; height: 35px"/>
-                    <span class="azul sub-menu"> Twitter</span>
+                    <a href="#" target="_blank">
+                        <img src="../public/image/twitter.ico" class="material-icons azul icono-redondo p-1"
+                             style="width: 35px; height: 35px"/>
+                        <span class="azul sub-menu"> Twitter</span>
+                    </a>
                 </div>
                 <div class="container-icono-sub-menu m-1">
-                    <img src="../public/image/linkedin.ico" class="material-icons azul icono-redondo p-1"
-                         style="width: 35px; height: 35px"/>
-                    <span class="azul sub-menu"> LinkedIn</span>
+                    <a href="#" target="_blank">
+                        <img src="../public/image/linkedin.ico"
+                             class="material-icons azul icono-redondo p-1"
+                             style="width: 35px; height: 35px"/>
+                        <span class="azul sub-menu"> LinkedIn</span>
+                    </a>
                 </div>
 
             </div>
             <!-- Menu Contacto-->
             <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionContacto" id="menuOcultoContacto">
-                <button onclick="mostrarMenu( 'contacto', 'menuOcultoContacto', 'noMostrar' )" class=" azul icono-redondo "> x</button>
+                <button onclick="mostrarMenu( 'contacto', 'menuOcultoContacto', 'noMostrar' )"
+                        class=" azul icono-cerrar "> x
+                </button>
                 <div class="container-icono-sub-menu align-items-center d-flex m-1">
-                    <span class="material-icons azul icono-redondo p-1">email</span>
-                    <span class="azul sub-menu"> Email</span>
+                    <a href="#" target="_blank">
+                        <span class="material-icons azul icono-redondo p-1">email</span>
+                        <span class="azul sub-menu"> Email</span>
+                    </a>
                 </div>
                 <div class="container-icono-sub-menu align-items-center d-flex m-1">
-                    <span class="material-icons azul icono-redondo p-1">whatsapp</span>
-                    <span class="azul sub-menu"> WhatsApp</span>
+                    <a href="#" target="_blank">
+                        <span class="material-icons azul icono-redondo p-1">whatsapp</span>
+                        <span class="azul sub-menu"> WhatsApp</span>
+                    </a>
                 </div>
                 <div class="container-icono-sub-menu align-items-center d-flex m-1">
-                    <span class="material-icons azul icono-redondo p-1">phone</span>
-                    <span class="azul sub-menu"> Telefono</span>
+                    <a href="#" target="_blank">
+                        <span class="material-icons azul icono-redondo p-1">phone</span>
+                        <span class="azul sub-menu"> Telefono</span>
+                    </a>
                 </div>
             </div>
             <!-- Menu Materiales-->
             <div class="buttons-links-sub-menu noMostrar flex-submenu superPosicionMateriales"
                  id="menuOcultoMateriales">
-                <button onclick="mostrarMenu( 'materiales', 'menuOcultoMateriales', 'noMostrar' )" class=" azul icono-redondo"> x</button>
+                <button onclick="mostrarMenu( 'materiales', 'menuOcultoMateriales', 'noMostrar' )"
+                        class=" azul icono-cerrar"> x
+                </button>
                 <div class="container-icono-sub-menu align-items-center d-flex m-1">
-                    <span class="material-icons azul icono-redondo p-1">add_to_drive</span>
-                    <span class="azul sub-menu"> Drive</span>
+                    <a href="#" target="_blank">
+                        <span class="material-icons azul icono-redondo p-1">add_to_drive</span>
+                        <span class="azul sub-menu"> Drive</span>
+                    </a>
                 </div>
                 <div class="container-icono-sub-menu align-items-center d-flex m-1">
-                    <span class="material-icons azul icono-redondo p-1">link</span>
-                    <span class="azul sub-menu"> Links</span>
+                    <a href="#" target="_blank">
+                        <span class="material-icons azul icono-redondo p-1">link</span>
+                        <span class="azul sub-menu"> Links</span>
+                    </a>
                 </div>
             </div>
             <!--End sub menus-->
@@ -99,7 +121,9 @@
                 <span class="azul sub-menu my-2">Materiales</span>
             </div>
             <div class="d-flex flex-column align-items-center">
-                <span class="material-icons azul icono-redondo p-1">language</span>
+                <a href="#" target="_blank">
+                    <span class="material-icons azul icono-redondo p-1">language</span>
+                </a>
                 <span class="azul sub-menu my-2"> Web </span>
             </div>
         </div>
@@ -122,14 +146,12 @@
                                     <h4>Concepto</h4>
                                     <h4>Monto</h4>
                                 </div>
-                                <% cliente.forEach(function(value) {%>
-                                <div class="evento my-4">
-                                    <span class="item"><%= value.destinatario %></span>
-                                    <span class="item"><%= value.monto %></span>
-                                </div>
-                                <% }) %> 
-                                                    
-                            
+                                <% cliente.forEach(function(value) { %>
+                                    <div class="evento my-4">
+                                        <span class="item"><%= value.destinatario %></span>
+                                        <span class="item"><%= value.monto %></span>
+                                    </div>
+                                <% }) %>
 
                             </div>
                         </div>
@@ -143,44 +165,44 @@
                         </div>
                         <h6 class="card-subtitle mb-2">Contrato vigente</h6>
                         <div class="container">
-                            <% etapa.forEach(function(value) {%>
+                            <% etapa.forEach(function(value) { %>
                                 <div class="evento">
                                     <h5><%= value.titulo %></h5>
-                                    <p><%= moment(value.fecha_eta).format('l') %></p>                                    
+                                    <p><%= moment(value.fecha_eta).format('l') %></p>
                                 </div>
                                 <div class="infoExtra">
                                     <p><%= value.descripcion %></p>
                                 </div>
                             <% }); %>
-                          <!-- <div class="evento">
-                                <h5>Reunión</h5>
-                                <p>0/0</p>
-                            </div>
-                            <div class="infoExtra">
-                                <p>Información extra sobre el evento</p>
-                            </div>
-                             <div class="evento">
-                                <h5>Reunión</h5>
-                                <p>0/0</p>
-                            </div>
-                            <div class="infoExtra">
-                                <p>Información extra sobre el evento</p>
-                            </div>
-                            <div class="evento">
-                                <h5>Reunión</h5>
-                                <p>0/0</p>
-                            </div>
-                            <div class="infoExtra">
-                                <p>Información extra sobre el evento</p>
-                            </div>
-                            <div class="evento">
-                                <h5>Reunión</h5>
-                                <p>0/0</p>
-                            </div>
-                            <div class="infoExtra">
-                                <p>Información extra sobre el evento</p>
-                            </div>-->
-                        </div> 
+                            <!-- <div class="evento">
+                                  <h5>Reunión</h5>
+                                  <p>0/0</p>
+                              </div>
+                              <div class="infoExtra">
+                                  <p>Información extra sobre el evento</p>
+                              </div>
+                               <div class="evento">
+                                  <h5>Reunión</h5>
+                                  <p>0/0</p>
+                              </div>
+                              <div class="infoExtra">
+                                  <p>Información extra sobre el evento</p>
+                              </div>
+                              <div class="evento">
+                                  <h5>Reunión</h5>
+                                  <p>0/0</p>
+                              </div>
+                              <div class="infoExtra">
+                                  <p>Información extra sobre el evento</p>
+                              </div>
+                              <div class="evento">
+                                  <h5>Reunión</h5>
+                                  <p>0/0</p>
+                              </div>
+                              <div class="infoExtra">
+                                  <p>Información extra sobre el evento</p>
+                              </div>-->
+                        </div>
                     </div>
                 </div>
                 <div class=" m-4 shadow cardsCliente">
@@ -191,10 +213,10 @@
                         </div>
                         <!-- <h6 class="card-subtitle mb-2">Contrato vigente</h6> -->
                         <div class="container">
-                            <% tfa.forEach(function(value) {%>
+                            <% tfa.forEach(function(value) { %>
                                 <div class="evento">
                                     <h5><%= value.titulo %></h5>
-                                    <p><%= moment(value.fecha_eta).format('l') %></p>                        
+                                    <p><%= moment(value.fecha_eta).format('l') %></p>
                                 </div>
                             <% }); %>
                             <!-- <div class="timeline">
@@ -259,7 +281,8 @@
                 </div>
                 <div id="nuevaEtapa" class="card my-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button class="flecha-left" onclick="ocultarNuevaEtapa()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaEtapa()"><i class="bi bi-arrow-left-short"></i>
+                        </button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir Etapa del proyecto</h5>
                         </div>
@@ -306,7 +329,8 @@
                 </div>
                 <div id="nuevaTFA" class="card m-4 shadow card-input noMostrar">
                     <div class="card-body">
-                        <button class="flecha-left" onclick="ocultarNuevaTFA()"><i class="bi bi-arrow-left-short"></i></button>
+                        <button class="flecha-left" onclick="ocultarNuevaTFA()"><i class="bi bi-arrow-left-short"></i>
+                        </button>
                         <div class="card-header">
                             <h5 class="card-title">Añadir TFA</h5>
                         </div>
